@@ -1,17 +1,25 @@
+# Jouleverse CGC会议纪要（2025.11.09）
+
+## CGC会议回放
 - 录制：Jouleverse Core Governance Conference (CGC)会议251109
 - 日期：2025-11-09 13:53:30
 - 录制文件：https://meeting.tencent.com/crm/2MG5MnnM2c
 - 访问密码：AKWE
 
+## 会务人员
+
+- 会议预定：Koant
+- 主持人兼书记员：Koant
+
 ---
 
-# 议题
+## 议题
 
 1. 本周工作量汇报
 2. 建议升级JNSDAO公众号为Jouleverse公众号，提议人：教链(evan)
 3. 建议Core组建若干执行团队，提议人：教链(evan)
 
-# 以下为2025.11.9 CGC会议纪要：
+## 会议纪要：
 
 **1. 公众号升级建议**
 

@@ -1,14 +1,18 @@
-录制: Jouleverse Core Governance Conference (CGC)会议251116
-日期: 2025-11-16 14:00:27
-录制文件：https://meeting.tencent.com/crm/NbnA7vk8b5
-密码：3PTP
-场次
+# Jouleverse CGC会议纪要（2025.11.16）
 
-CGC会议251109
-会务人员
+## CGC会议回放
 
-会议预定：Koant
-主持人兼书记员：楼兰渔夫
+- 录制: Jouleverse Core Governance Conference (CGC)会议251116
+- 日期: 2025-11-16 14:00:27
+- 录制文件：https://meeting.tencent.com/crm/NbnA7vk8b5
+- 密码：3PTP
+
+## 会务人员
+
+- 会议预定：Koant
+- 主持人兼书记员：楼兰渔夫
+
+## 会议纪要
 
 会议集中讨论了
 1.本周工作量汇报

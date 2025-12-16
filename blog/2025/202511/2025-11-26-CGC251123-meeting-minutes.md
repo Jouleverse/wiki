@@ -1,7 +1,18 @@
-Jouleverse CGC会议纪要（2025.11.23）
+# Jouleverse CGC会议纪要（2025.11.23）
 
+## CGC会议回放
 
-会议议题：
+- 录制：Jouleverse Core Governance Conference (CGC)会议251123
+- 日期：2025-11-23 13:58:26
+- 录制文件：https://meeting.tencent.com/crm/2kDLRB4Y88
+- 访问密码：5MJZ
+
+## 会务人员
+
+- 会议预定：Koant
+- 主持人兼书记员：如行
+
+## 会议议题：
 
 一.、本周工作量汇报
 二、 讨论统计数据上传github表格能否合并（微尘）。
