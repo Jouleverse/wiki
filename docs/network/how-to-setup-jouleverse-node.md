@@ -335,7 +335,7 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260126/linux-amd64/go1.19.1",
 ```
 
 #### B2：升级记账节点
@@ -369,7 +369,7 @@ jnode status
 # 检查节点版本
 jnode console admin.nodeInfo | grep name
 
-# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-w20260126/linux-amd64/go1.19.1",
+# 上述命令应输出结果：  name: "Geth/v1.11.4-jouleverse-9dfa34e5-20240229/tag-m20260126/linux-amd64/go1.19.1",
 ```
 
 ### 记账节点审计入网
