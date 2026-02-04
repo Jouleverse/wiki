@@ -2,8 +2,15 @@
 
 ### 1月
 
-2026.01.04 [Jouleverse CGC会议纪要（2025.12.28）](2025/202512/2026-01-04-CGC251228-meeting-minutes.md)
+* 2026.01.04 [Jouleverse CGC会议纪要（2025.12.28）](2025/202512/2026-01-04-CGC251228-meeting-minutes.md)
+* 2026.01.18 [Jouleverse CGC会议纪要（2026.01.11）](2026/202601/2026-01-18-CGC260111-meeting-minutes.md)
+* 2026.01.20 [从区块链本质到 Jouleverse 链上自动化统计](2026/202601/2026-01-20-From-Blockchain-Fundamentals-to-Jouleverse-On-Chain-Automation-Metrics.md)
+* 2026.01.23 [Jouleverse CGC会议纪要（2026.01.18）](2026-01-23-CGC260118-meeting-minutes.md)
+* 2026.01.28 [Jouleverse CGC会议纪要（2026.01.25）](2026-01-28-CGC260125-meeting-minutes.md)
 
+### 2月
+
+* 2026.02.04 [Jouleverse节点包RC20260129测试发布](2026-02-04-node-package-20260129.md)
 
 ## 2025年
 
