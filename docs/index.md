@@ -18,7 +18,9 @@ Note: 欢迎来到Jouleverse知识库! 本知识库的建设目标是成为你�
 
 ## 节点网络
 
-[Jouleverse主网节点搭建指南](network/how-to-setup-jouleverse-node.md) （by 教链）
+[Jouleverse主网节点搭建指南](network/how-to-setup-jouleverse-node.md) （by 教链🆔J25）
+
+[Jouleverse主网节点搭建指南 (2024旧版）](network/how-to-setup-jouleverse-node-2024.md) （by 教链）
 
 [如何找回nodekey文件](network/how-to-recover-nodekey.md)（by 此今）
 

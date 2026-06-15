@@ -181,7 +181,7 @@
                     <div class="card-body">
                         <!-- 钱包连接部分 -->
                         <div id="jvcore-wallet-section">
-                            <p class="card-text mb-2">连接钱包以查看和签到您的Core ID</p>
+                            <p class="card-text mb-2">连接钱包以查看和签到您的Core 🆔</p>
                             <button id="jvcore-connect-btn" class="btn btn-success btn-sm">
                                 连接钱包
                             </button>
@@ -201,10 +201,10 @@
                             </div>
                         </div>
                         
-                        <!-- Core ID列表部分 -->
+                        <!-- Core 🆔列表部分 -->
                         <div id="jvcore-coreids-section" style="display:none;">
                             <hr>
-                            <h6>我的Core ID</h6>
+                            <h6>我的Core 🆔</h6>
                             <div id="jvcore-coreids-list"></div>
                         </div>
                         
@@ -234,7 +234,7 @@
                     width: 100%;
                 }
                 
-                /* Core ID卡片样式 */
+                /* Core 🆔卡片样式 */
                 .core-id-card {
                     border: 1px solid #dee2e6;
                     border-radius: 6px;
@@ -328,7 +328,36 @@
                     width: 2rem;
                     height: 2rem;
                 }
-                
+
+				/* 签到警告样式 - 简化版 */
+				.checkin-warning {
+					margin: 10px 0;
+					padding: 12px;
+					background-color: #fff8e1;
+					border: 1px solid #ffd54f;
+					border-radius: 6px;
+					font-size: 0.85rem;
+					line-height: 1.4;
+				}
+
+				.checkin-warning ul {
+					margin: 0;
+					padding-left: 20px;
+				}
+
+				.checkin-warning li {
+					margin-bottom: 6px;
+					color: #5d4037;
+				}
+
+				.checkin-warning li:last-child {
+					margin-bottom: 0;
+				}
+
+				.checkin-warning strong {
+					color: #e53935;
+				}
+
                 /* 钱包地址显示 */
                 #jvcore-wallet-address {
                     word-break: break-all;
@@ -337,6 +366,7 @@
                 }
                 
                 /* 响应式调整 */
+				/* 移动端适配 */
                 @media (max-width: 768px) {
                     #md-jvcore-checkin {
                         max-width: 100%; /* 在小屏幕上使用全宽 */
@@ -350,6 +380,15 @@
                     .core-id-status {
                         margin-top: 4px;
                     }
+
+					.checkin-warning {
+						padding: 10px;
+						font-size: 0.8rem;
+					}
+
+					.checkin-warning ul {
+						padding-left: 18px;
+					}
                 }
                 
                 /* 非常小的屏幕 */
@@ -453,17 +492,17 @@
         $('#jvcore-wallet-address').text(userAddress);
         $('#jvcore-coreids-section').show();
         
-        // 加载Core ID列表
+        // 加载Core 🆔列表
         loadCoreIDList();
     }
 
-    // 加载Core ID列表
+    // 加载Core 🆔列表
     async function loadCoreIDList() {
         try {
             $('#jvcore-coreids-list').html(`
                 <div class="checkin-loading">
                     <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
-                    <p class="mt-2 small">正在加载Core ID...</p>
+                    <p class="mt-2 small">正在加载Core 🆔...</p>
                 </div>
             `);
             
@@ -472,7 +511,7 @@
             if (balance === '0' || parseInt(balance) === 0) {
                 $('#jvcore-coreids-list').html(`
                     <div class="alert alert-warning">
-                        您还没有Core ID
+                        您还没有Core 🆔
                     </div>
                 `);
                 return;
@@ -501,7 +540,7 @@
             } else {
                 $('#jvcore-coreids-list').html(`
                     <div class="alert alert-danger">
-                        无法加载Core ID信息
+                        无法加载Core 🆔信息
                     </div>
                 `);
             }
@@ -526,7 +565,7 @@
         return `
             <div class="core-id-card">
                 <div class="core-id-header">
-                    <div class="core-id-title">Core ID: #${tokenId}</div>
+                    <div class="core-id-title">🆔J${tokenId}</div>
                     <span class="core-id-status ${isLiveness ? 'status-active' : 'status-expired'}">
                         ${isLiveness ? '活跃' : '已过期'}
                     </span>
@@ -540,6 +579,14 @@
                         ${monthStatus.text}
                     </div>
                 </div>
+
+				<div class="checkin-warning">
+					<ul>
+						<li>❗️签到前请先确认已完成上月（及以前）核心贡献工作量（Core PoWh）数据上报（确认已上报非标工作量；或，确认无非标工作量需要上报）</li>
+						<li>❗️链上签到代表本人已确认完成上报，可以接受PoWh统计了（本人不进行链上签到确认，可能会被排除统计）</li>
+						<li>❗️如尚未完成上报，建议暂缓签到，待上报完成（注意截止日期，通常是每月15号前）再完成链上签到</li>
+					</ul>
+				</div>
                 
                 <button ${buttonOnClick} class="btn ${buttonClass} btn-sm checkin-button" ${buttonDisabled}>
                     ${buttonText}
