@@ -546,4 +546,4 @@ jnode console admin.nodeInfo
 
 - Evan Liu 🆔J25 (evan.j)
 - Astudysunny
-- 小新 🆔J60
+- 小新
