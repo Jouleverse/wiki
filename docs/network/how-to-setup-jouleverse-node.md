@@ -13,9 +13,9 @@
 2. ✅ [完成高级KYC并获得Core 🆔（链上 NFT）](how-to-register-core-and-check-in.md#1-完成高级-kyc)
 3. ✅ [每月及时完成链上签到，证明维护人活跃](how-to-register-core-and-check-in.md#4-每月链上签到)
 
-## 🤖 AI 辅助提示
+## 🤖 AI AGENTS
 
-> 如果你正在使用 AI 助手（如 ChatGPT、Claude 等），**可将本文档的链接直接复制给 AI 助手**，让其学习文档内容后协助你完成节点搭建的每一步操作。
+> 如果你正在使用 AI 助手（如 OpenClaw、Pi Coding Agent 等），**可将本文档的链接直接复制给 AI 助手**，让其学习文档内容后协助你完成节点搭建的每一步操作。
 
 ## 完整流程总览
 
