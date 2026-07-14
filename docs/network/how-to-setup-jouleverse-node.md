@@ -10,12 +10,24 @@
 
 获得节点激励检查清单：
 1. ✅ 节点搭建完毕，正常运行，登记入网，完成审计
-2. ✅ 完成高级KYC并获得Core 🆔
-3. ✅ 每月及时完成链上签到，证明维护人活跃
+2. ✅ [完成高级KYC并获得Core 🆔（链上 NFT）](how-to-register-core-and-check-in.md#1-完成高级-kyc)
+3. ✅ [每月及时完成链上签到，证明维护人活跃](how-to-register-core-and-check-in.md#4-每月链上签到)
+
+## 🤖 AI 辅助提示
+
+> 如果你正在使用 AI 助手（如 ChatGPT、Claude 等），**可将本文档的链接直接复制给 AI 助手**，让其学习文档内容后协助你完成节点搭建的每一步操作。
+
+## 完整流程总览
+
+下面的流程图帮助你快速了解从零开始到持续获得激励的完整路径：
+
+![节点搭建流程](node-setup-flow.svg)
+
+> 💡 步骤 ⑤-⑨ 的详细操作请参考 → [入网后：申请Core 🆔 与 每月链上签到指南](how-to-register-core-and-check-in.md)
 
 ## 简明步骤
 
-1. 准备keystore账户，用户签名出块
+1. 准备keystore账户，用于签名出块 **（仅记账节点需要）**
 2. 准备独立云主机、独立IP，最低配置（2核4G内存40G硬盘），Ubuntu 20.04 Linux带docker，防火墙打开30311/tcp和30311/udp （见证节点请再打开8501/tcp）【注意与testnet端口号皆有不同】
 3. 下载节点软件包 jouleverse-node-20260129.tar.gz ，并启动节点
 4. 【仅记账节点】在节点群里通知其他节点投票，批准自己节点入网
@@ -24,6 +36,8 @@
 ---
 
 ## 账户准备
+
+> **⚠ 仅记账节点需要。**
 
 keystore是一种把私钥加密保存在文本文件中的技术。keystore文件是加密保存了私钥的文本文件（json格式）。可以用 https://vanity-eth.tk/ 这个工具生成。记住keystore对应的地址0xAAA...（下文称为“签块地址”），并把keystore文件下载到电脑上，重命名为mainnet.keystore 。请妥善保管keystore文件并记住其解锁密码。稍后需要将该文件放到云主机上面去。
 
@@ -257,9 +271,13 @@ jnode console admin.nodeInfo
 1. 搭建节点并运行，查看日志，等待若干小时，区块同步到最新高度
 2. 将上面的三张截图【节点运行日志截图】【审计节点连接截图】【本节点信息截图】，发到节点预备群，请大家帮忙审查，确认运行无误后，填写[节点信息登记表](https://docs.qq.com/form/page/DTEp2cEdsa0lTelB0)
 3. 填表完成后，在节点预备群提请审计节点将你的见证节点加入审计列表
-4. 审计通过后，本人需进行高级KYC登记，申请加入jouleverse core（核心贡献者组），获取Core 🆔并每月完成链上签到，开始享受PoWh机制激励
+4. 审计通过后，本人需进行高级KYC登记，[申请加入jouleverse core（核心贡献者组），获取Core 🆔并每月完成链上签到](how-to-register-core-and-check-in.md)，开始享受PoWh机制激励
 
 恭喜成功入网！
+
+---
+
+> 📖 **下一步：** [入网后：申请Core 🆔 与 每月链上签到指南 →](how-to-register-core-and-check-in.md)
 
 ## 选项B：搭建记账节点
 
@@ -450,9 +468,13 @@ jnode console admin.nodeInfo
 6. 审计通过后，在节点预备群发出你的节点信息（IP, 签块地址），请其他记账节点审议和投票
 7. 投票通过后，检查新“三件套”（1- 节点运行日志截图，即 jnode watch ；2- jnode console 'clique.status()' ；3- jnode console 'clique.getSnapshot()' ），并一一截图发到节点预备群，请大家帮助审查，确认出块无误
 8. 确认正常记账后，请审计节点把你节点从预备记账（miner\*）变更为正式记账（miner）
-9. 审计通过后，本人需进行高级KYC登记，申请加入jouleverse core（核心贡献者组），获取Core 🆔并每月完成链上签到，开始享受PoWh机制激励
+9. 审计通过后，本人需进行高级KYC登记，[申请加入jouleverse core（核心贡献者组），获取Core 🆔并每月完成链上签到](how-to-register-core-and-check-in.md)，开始享受PoWh机制激励
 
 恭喜成功入网！
+
+---
+
+> 📖 **下一步：** [入网后：申请Core 🆔 与 每月链上签到指南 →](how-to-register-core-and-check-in.md)
 
 ...
 

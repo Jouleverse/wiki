@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jouleverse Core 贡献者 KYC 登记</title>
+<style>
+ * { box-sizing: border-box; margin: 0; padding: 0; }
+ body {
+ font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+ background: #f5f6f8; color: #1a1a2e; line-height: 1.6; padding: 20px;
+ }
+ .container { max-width: 720px; margin: 0 auto; }
+ h1 {
+ font-size: 22px; font-weight: 600; margin-bottom: 4px;
+ color: #1a1a2e; text-align: center;
+ }
+ .subtitle {
+ font-size: 13px; color: #888; text-align: center; margin-bottom: 24px;
+ }
+ .card {
+ background: #fff; border-radius: 12px; padding: 24px 28px;
+ box-shadow: 0 1px 4px rgba(0,0,0,.06); margin-bottom: 16px;
+ }
+ .card-title {
+ font-size: 16px; font-weight: 600; margin-bottom: 16px;
+ padding-bottom: 10px; border-bottom: 1px solid #eee;
+ }
+ .field { margin-bottom: 14px; }
+ .field label {
+ display: block; font-size: 13px; font-weight: 500;
+ color: #555; margin-bottom: 4px;
+ }
+ .field label .optional { font-weight: 400; color: #aaa; }
+ .field input, .field select, .field textarea {
+ width: 100%; padding: 10px 12px; font-size: 14px; border: 1px solid #ddd;
+ border-radius: 8px; outline: none; transition: border-color .2s;
+ font-family: inherit;
+ }
+ .field input:focus, .field select:focus, .field textarea:focus {
+ border-color: #4a6cf7; box-shadow: 0 0 0 3px rgba(74,108,247,.1);
+ }
+ .field textarea { resize: vertical; min-height: 60px; }
+ .field .hint { font-size: 12px; color: #aaa; margin-top: 2px; }
+
+ /* 类型选择按钮组 */
+ .type-selector {
+ display: flex; gap: 12px; margin-bottom: 20px;
+ }
+ .type-btn {
+ flex: 1; padding: 12px; text-align: center; border-radius: 10px;
+ border: 2px solid #ddd; background: #fff; cursor: pointer;
+ font-size: 15px; font-weight: 500; transition: all .2s;
+ }
+ .type-btn:hover { border-color: #4a6cf7; }
+ .type-btn.active {
+ border-color: #4a6cf7; background: #eef1ff; color: #4a6cf7;
+ }
+
+ /* 企业信息区块 - 默认隐藏 */
+ .enterprise-section { display: none; }
+ .enterprise-section.visible { display: block; }
+
+ /* 提交按钮 */
+ .submit-btn {
+ width: 100%; padding: 14px; font-size: 16px; font-weight: 600;
+ border: none; border-radius: 10px; background: #4a6cf7; color: #fff;
+ cursor: pointer; transition: background .2s;
+ }
+ .submit-btn:hover { background: #3b5de7; }
+
+ /* 弹窗遮罩 */
+ .modal-overlay {
+ display: none; position: fixed; inset: 0; z-index: 999;
+ background: rgba(0,0,0,.4); align-items: center; justify-content: center;
+ }
+ .modal-overlay.show { display: flex; }
+ .modal {
+ background: #fff; border-radius: 14px; padding: 28px;
+ max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto;
+ box-shadow: 0 10px 40px rgba(0,0,0,.15);
+ }
+ .modal h2 { font-size: 18px; margin-bottom: 16px; }
+ .modal .summary { font-size: 14px; line-height: 1.8; white-space: pre-wrap; }
+ .modal .summary strong { color: #333; }
+ .modal-actions {
+ display: flex; gap: 12px; margin-top: 20px; justify-content: flex-end;
+ }
+ .modal-actions button {
+ padding: 10px 24px; border-radius: 8px; border: none;
+ font-size: 14px; font-weight: 500; cursor: pointer;
+ }
+ .btn-back { background: #f0f0f0; color: #555; }
+ .btn-back:hover { background: #e4e4e4; }
+ .btn-copy { background: #34c759; color: #fff; }
+ .btn-copy:hover { background: #2db84e; }
+ .btn-send { background: #4a6cf7; color: #fff; }
+ .btn-send:hover { background: #3b5de7; }
+
+ .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+ .checkbox-item {
+ display: inline-flex; align-items: center; gap: 4px;
+ padding: 6px 14px; border-radius: 8px; border: 1px solid #ddd;
+ font-size: 14px; cursor: pointer; transition: all .2s; user-select: none;
+ }
+ .checkbox-item:hover { border-color: #4a6cf7; }
+ .checkbox-item input[type="checkbox"] { accent-color: #4a6cf7; margin: 0; }
+ .checkbox-item:has(input:checked) {
+ border-color: #4a6cf7; background: #eef1ff; color: #4a6cf7;
+ }
+ .divider { border: none; border-top: 1px solid #eee; margin: 14px 0; }
+
+ @media (max-width: 480px) {
+ .card { padding: 16px 18px; }
+ .modal { padding: 20px; }
+ }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+ <h1>Jouleverse Core 贡献者 KYC 登记</h1>
+ <p class="subtitle">请如实填写以下信息，审查员核验无误后建档并为你创建 Core ID（链上 NFT）</p>
+
+ <form id="kycForm">
+
+ <!-- 隐私提示 -->
+ <div class="card" style="background:#fff8e1;border:1px solid #f9a825;">
+ <p style="font-size:13px;color:#795548;line-height:1.6;">
+ 🔒 <b>隐私说明：</b>本表单收集的身份证号、手机号等敏感信息仅用于 KYC 实名认证，由审查员在核验后归档保存，不会公开或用于其他用途。提交时请确认接收方为 Jouleverse Core 指定的审查员。
+ </p>
+ </div>
+
+ <!-- 类型选择 -->
+ <div class="card">
+ <div class="card-title">申请类型</div>
+ <div class="type-selector" id="typeSelector">
+ <div class="type-btn active" data-type="individual">🙋 个人节点</div>
+ <div class="type-btn" data-type="enterprise">🏢 企业/机构节点</div>
+ </div>
+ </div>
+
+ <!-- 基本信息（通用） -->
+ <div class="card">
+ <div class="card-title">基本信息</div>
+
+ <div class="field">
+ <label>常用称谓/昵称 <span class="optional">*</span></label>
+ <input type="text" id="nickname" placeholder="大家熟悉的称呼">
+ </div>
+
+ <div class="field" id="roleField">
+ <label>在核心团队的角色 <span class="optional">*</span>（可多选）</label>
+ <div class="checkbox-group">
+ <label class="checkbox-item"><input type="checkbox" name="role" value="见证节点"> 见证节点</label>
+ <label class="checkbox-item"><input type="checkbox" name="role" value="记账节点"> 记账节点</label>
+ <label class="checkbox-item"><input type="checkbox" name="role" value="机构节点"> 机构节点</label>
+ <label class="checkbox-item"><input type="checkbox" name="role" value="产品开发"> 产品开发</label>
+ <label class="checkbox-item"><input type="checkbox" name="role" value="社群建设"> 社群建设</label>
+ <label class="checkbox-item"><input type="checkbox" name="role" value="其他"> 其他</label>
+ </div>
+ </div>
+
+ <div class="field">
+ <label>接收空投的链地址 <span class="optional">*</span></label>
+ <input type="text" id="wallet" placeholder="0x...">
+ <div class="hint">该地址原则上不允许变更，请妥善保管助记词/私钥</div>
+ </div>
+
+ <div class="field">
+ <label>JNS域名 <span class="optional">（选填）</span></label>
+ <input type="text" id="jns" placeholder="xxx.j">
+ </div>
+
+ <div class="field">
+ <label>所在城市 <span class="optional">*</span></label>
+ <input type="text" id="city" placeholder="省-市">
+ </div>
+
+ <div class="field">
+ <label>真实姓名 <span class="optional">*</span></label>
+ <input type="text" id="realName" placeholder="身份证姓名">
+ </div>
+
+ <div class="field">
+ <label>身份证号 <span class="optional">*</span></label>
+ <input type="text" id="idNumber" placeholder="18 位身份证号码">
+ </div>
+
+ <div class="field">
+ <label>手机号码 <span class="optional">*</span></label>
+ <input type="tel" id="mobile" placeholder="11 位手机号">
+ </div>
+
+ <div class="field">
+ <label>微信号码 <span class="optional">*</span></label>
+ <input type="text" id="wid" placeholder="常用微信号，不是微信昵称">
+ </div>
+
+ <div class="field">
+ <label>Email 地址 <span class="optional">*</span></label>
+ <input type="email" id="email" placeholder="备用联系方式">
+ </div>
+
+ <div class="field">
+ <label>GitHub 个人主页 <span class="optional">（选填，请输入完整 URL 或用户名）</span></label>
+ <input type="text" id="github" placeholder="https://github.com/你的账号 或 用户名">
+ </div>
+ </div>
+
+ <!-- 企业信息（仅企业类型） -->
+ <div class="card enterprise-section" id="enterpriseSection">
+ <div class="card-title">🏢 企业/机构信息</div>
+
+ <div class="field">
+ <label>节点名称 <span class="optional">*</span></label>
+ <input type="text" id="entNodeName" placeholder="如：元神道">
+ </div>
+
+ <div class="field">
+ <label>节点类型 <span class="optional">*</span></label>
+ <select id="entNodeType">
+ <option value="">请选择</option>
+ <option value="见证节点">见证节点</option>
+ <option value="记账节点">记账节点</option>
+ <option value="见证节点/记账节点">见证节点/记账节点</option>
+ </select>
+ </div>
+
+ <div class="field">
+ <label>公司名称 <span class="optional">*</span></label>
+ <input type="text" id="entCompany" placeholder="营业执照上的公司全称">
+ </div>
+
+ <div class="field">
+ <label>注册地址 <span class="optional">*</span></label>
+ <input type="text" id="entAddress" placeholder="营业执照上的注册地址">
+ </div>
+
+ <div class="field">
+ <label>经营许可证编号 <span class="optional">*</span></label>
+ <input type="text" id="entLicense" placeholder="统一社会信用代码">
+ </div>
+
+ <hr class="divider">
+
+ <p style="font-size:13px;color:#888;margin-bottom:12px;">⬇ 法定代表人信息</p>
+
+ <div class="field">
+ <label>法人代表姓名 <span class="optional">*</span></label>
+ <input type="text" id="entLegalName" placeholder="法定代表人姓名">
+ </div>
+
+ <div class="field">
+ <label>法人代表联系电话 <span class="optional">*</span></label>
+ <input type="tel" id="entLegalMobile" placeholder="手机号码">
+ </div>
+
+ <div class="field">
+ <label>法人代表 Email <span class="optional">*</span></label>
+ <input type="email" id="entLegalEmail" placeholder="电子邮箱">
+ </div>
+
+ <hr class="divider">
+
+ <p style="font-size:13px;color:#888;margin-bottom:12px;">⬇ IT 负责人信息</p>
+
+ <div class="field">
+ <label>IT 负责人姓名 <span class="optional">*</span></label>
+ <input type="text" id="entItName" placeholder="IT 运维负责人">
+ </div>
+
+ <div class="field">
+ <label>IT 负责人紧急联系电话 <span class="optional">*</span></label>
+ <input type="tel" id="entItMobile" placeholder="手机号码">
+ </div>
+
+ <div class="field">
+ <label>IT 负责人 Email <span class="optional">*</span></label>
+ <input type="email" id="entItEmail" placeholder="电子邮箱">
+ </div>
+
+ <div class="field">
+ <label>IT 负责人微信 ID <span class="optional">*</span></label>
+ <input type="text" id="entItWid" placeholder="微信号">
+ </div>
+
+ <div class="field">
+ <label>IT 负责人 GitHub 账号 <span class="optional">（选填）</span></label>
+ <input type="text" id="entItGithub" placeholder="GitHub 用户名">
+ </div>
+ </div>
+
+ <!-- 审查员选择 -->
+ <div class="card">
+ <div class="card-title">选择审查员</div>
+ <div class="field">
+ <select id="reviewerSelect">
+ <option value="evan@blockcoach.com|教链（J25）">教链（J25）- evan@blockcoach.com</option>
+ </select>
+ <div class="hint">如果列表中没有你的审查员，请先联系 Core 管理员确认</div>
+ </div>
+ </div>
+
+ <!-- 提交 -->
+ <button type="button" class="submit-btn" onclick="preview()">提交审查</button>
+ <p style="font-size:12px;color:#bbb;text-align:center;margin-top:8px;">
+ 提交后将生成信息汇总，供您检查确认后发送给审查员
+ </p>
+
+ </form>
+</div>
+
+<!-- 预览弹窗 -->
+<div class="modal-overlay" id="modalOverlay">
+ <div class="modal">
+ <h2>📋 请核对您的 KYC 信息</h2>
+ <div class="summary" id="summaryText"></div>
+ <p style="font-size:13px;color:#888;margin-bottom:8px;line-height:1.6;">📋 <b>复制到剪贴板</b>：复制后请自行前往邮箱，新建邮件→粘贴→发送给审查员<br>✉️ <b>立即发送邮件</b>：直接调用系统邮件App，自动填入收件人和正文</p>
+ <p id="reviewerInfo" style="font-size:13px;color:#4a6cf7;background:#eef1ff;padding:8px 12px;border-radius:8px;margin-bottom:12px;">📬 收件人审查员：<span id="reviewerDisplay">教链（J25）- evan@blockcoach.com</span></p>
+ <div class="modal-actions">
+ <button class="btn-back" onclick="closeModal()">← 返回修改</button>
+ <button class="btn-copy" onclick="copyToClipboard()">📋 复制到剪贴板</button>
+ <button class="btn-send" onclick="sendEmail()">✉ 立即发送邮件</button>
+ </div>
+ </div>
+</div>
+
+<script>
+// 类型切换
+document.getElementById('typeSelector').addEventListener('click', function(e) {
+ const btn = e.target.closest('.type-btn');
+ if (!btn) return;
+ document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const type = btn.dataset.type;
+ const section = document.getElementById('enterpriseSection');
+ section.classList.toggle('visible', type === 'enterprise');
+});
+
+// 收集表单数据
+function collectData() {
+ const isEnterprise = document.querySelector('.type-btn.active').dataset.type === 'enterprise';
+ // 收集多选角色
+ const roleCheckboxes = document.querySelectorAll('input[name="role"]:checked');
+ const roles = Array.from(roleCheckboxes).map(cb => cb.value);
+ const d = {
+ type: isEnterprise ? 'enterprise' : 'individual',
+ nickname: document.getElementById('nickname').value.trim(),
+ role: roles.join(' / '),
+ wallet: document.getElementById('wallet').value.trim(),
+ jns: document.getElementById('jns').value.trim(),
+ city: document.getElementById('city').value.trim(),
+ realName: document.getElementById('realName').value.trim(),
+ idNumber: document.getElementById('idNumber').value.trim(),
+ mobile: document.getElementById('mobile').value.trim(),
+ wid: document.getElementById('wid').value.trim(),
+ email: document.getElementById('email').value.trim(),
+ github: document.getElementById('github').value.trim()
+ };
+ if (isEnterprise) {
+ d.ent = {
+ nodeName: document.getElementById('entNodeName').value.trim(),
+ nodeType: document.getElementById('entNodeType').value,
+ company: document.getElementById('entCompany').value.trim(),
+ address: document.getElementById('entAddress').value.trim(),
+ license: document.getElementById('entLicense').value.trim(),
+ legalName: document.getElementById('entLegalName').value.trim(),
+ legalMobile: document.getElementById('entLegalMobile').value.trim(),
+ legalEmail: document.getElementById('entLegalEmail').value.trim(),
+ itName: document.getElementById('entItName').value.trim(),
+ itMobile: document.getElementById('entItMobile').value.trim(),
+ itEmail: document.getElementById('entItEmail').value.trim(),
+ itWid: document.getElementById('entItWid').value.trim(),
+ itGithub: document.getElementById('entItGithub').value.trim()
+ };
+ }
+ return d;
+}
+
+// 辅助校验
+function validateIdNumber(val) {
+ return /^\d{17}[\dXx]$/.test(val);
+}
+function validateMobile(val) {
+ return /^1\d{10}$/.test(val);
+}
+function validateAddress(val) {
+ return /^0x[a-fA-F0-9]{40}$/.test(val);
+}
+
+// 验证必填
+function validate(d) {
+ // 验证必填文本字段
+ const required = ['nickname', 'wallet', 'city', 'realName', 'idNumber', 'mobile', 'wid', 'email'];
+ for (const key of required) {
+ if (!d[key]) {
+ const labels = { nickname:'昵称', wallet:'链地址', city:'城市', realName:'真实姓名',
+ idNumber:'身份证号', mobile:'手机号码', wid:'微信号码', email:'Email' };
+ alert(`请填写「${labels[key]||key}」`);
+ return false;
+ }
+ }
+ // 格式校验
+ if (!validateIdNumber(d.idNumber)) {
+ alert('身份证号格式有误，应为 18 位（末位可为 X）');
+ return false;
+ }
+ if (!validateMobile(d.mobile)) {
+ alert('手机号格式有误，应为 11 位数字');
+ return false;
+ }
+ if (!validateAddress(d.wallet)) {
+ alert('链地址格式有误，应为 0x 开头的 42 位十六进制地址');
+ return false;
+ }
+ // 验证至少选择一个角色
+ const checkedRoles = document.querySelectorAll('input[name="role"]:checked');
+ if (checkedRoles.length === 0) {
+ alert('请至少选择一个角色');
+ return false;
+ }
+ if (d.type === 'enterprise') {
+ const e = d.ent;
+ const entRequired = ['nodeName','nodeType','company','address','license','legalName','legalMobile','legalEmail','itName','itMobile','itEmail','itWid'];
+ for (const key of entRequired) {
+ if (!e[key]) {
+ const labels = { nodeName:'节点名称', nodeType:'节点类型', company:'公司名称', address:'注册地址',
+ license:'经营许可证', legalName:'法人姓名', legalMobile:'法人电话', legalEmail:'法人Email',
+ itName:'IT负责人姓名', itMobile:'IT负责人电话', itEmail:'IT负责人Email', itWid:'IT负责人微信' };
+ alert(`请填写企业信息中的「${labels[key]||key}」`);
+ return false;
+ }
+ }
+ if (e.legalMobile && !validateMobile(e.legalMobile)) {
+ alert('法人联系电话格式有误');
+ return false;
+ }
+ if (e.itMobile && !validateMobile(e.itMobile)) {
+ alert('IT负责人联系电话格式有误');
+ return false;
+ }
+ }
+ return true;
+}
+
+// 获取当前选择审查员
+function getReviewer() {
+ const sel = document.getElementById('reviewerSelect');
+ const val = sel.value;
+ const parts = val.split('|');
+ return { email: parts[0], name: parts[1] || '' };
+}
+
+// 格式化摘要
+function formatSummary(d) {
+ let s = '';
+ // 基本信息
+ s += '━━━ 基本信息 ━━━\n';
+ s += `申请类型：${d.type === 'enterprise' ? '🏢 企业/机构节点' : '🙋 个人节点'}\n`;
+ s += `常用称谓：${d.nickname}\n`;
+ s += `核心角色：${d.role}\n`;
+ s += `链　地　址：${d.wallet}\n`;
+ if (d.jns) s += `JNS域名：${d.jns}\n`;
+ s += `所　在　地：${d.city}\n`;
+ s += `真实姓名：${d.realName}\n`;
+ s += `身份证号：${d.idNumber}\n`;
+ s += `手机号码：${d.mobile}\n`;
+ s += `微信号码：${d.wid}\n`;
+ s += `Email：${d.email}\n`;
+ if (d.github) s += `GitHub：${d.github}\n`;
+
+ // 企业信息
+ if (d.type === 'enterprise') {
+ const e = d.ent;
+ s += '\n━━━ 企业/机构信息 ━━━\n';
+ s += `节点名称：${e.nodeName}\n`;
+ s += `节点类型：${e.nodeType}\n`;
+ s += `公司名称：${e.company}\n`;
+ s += `注册地址：${e.address}\n`;
+ s += `经营许可证：${e.license}\n`;
+ s += `\n-- 法定代表人 --\n`;
+ s += `姓　　名：${e.legalName}\n`;
+ s += `电　　话：${e.legalMobile}\n`;
+ s += `Email：${e.legalEmail}\n`;
+ s += `\n-- IT 负责人 --\n`;
+ s += `姓　　名：${e.itName}\n`;
+ s += `紧急电话：${e.itMobile}\n`;
+ s += `Email：${e.itEmail}\n`;
+ s += `微　　信：${e.itWid}\n`;
+ if (e.itGithub) s += `GitHub：${e.itGithub}\n`;
+ }
+
+ s += '\n━━━━━━━━━━━━━━━━\n';
+ s += '请仔细核对以上所有信息。确认无误后，选择下方按钮提交。';
+ return s;
+}
+
+// 预览弹窗
+function preview() {
+ const d = collectData();
+ if (!validate(d)) return;
+ document.getElementById('summaryText').textContent = formatSummary(d);
+ // 更新审查员显示
+ const reviewer = getReviewer();
+ const displayEl = document.getElementById('reviewerDisplay');
+ if (displayEl) {
+ displayEl.textContent = reviewer.name + ' - ' + reviewer.email;
+ }
+ document.getElementById('modalOverlay').classList.add('show');
+}
+
+function closeModal() {
+ document.getElementById('modalOverlay').classList.remove('show');
+}
+
+// 构建邮件正文（纯文本格式，使用实际换行）
+function buildEmailBody(d) {
+ let nl = '\n';
+ let body = '';
+ body += 'Jouleverse Core 贡献者 KYC 申请资料' + nl + nl;
+ body += '申请类型：' + (d.type === 'enterprise' ? '企业/机构节点' : '个人节点') + nl;
+ body += '常用称谓：' + d.nickname + nl;
+ body += '核心角色：' + d.role + nl;
+ body += '链地址：' + d.wallet + nl;
+ if (d.jns) body += 'JNS域名：' + d.jns + nl;
+ body += '所在城市：' + d.city + nl;
+ body += '真实姓名：' + d.realName + nl;
+ body += '身份证号：' + d.idNumber + nl;
+ body += '手机号码：' + d.mobile + nl;
+ body += '微信号码：' + d.wid + nl;
+ body += 'Email：' + d.email + nl;
+ if (d.github) body += 'GitHub：' + d.github + nl;
+ if (d.type === 'enterprise') {
+ const e = d.ent;
+ body += nl + '--- 企业/机构信息 ---' + nl;
+ body += '节点名称：' + e.nodeName + nl;
+ body += '节点类型：' + e.nodeType + nl;
+ body += '公司名称：' + e.company + nl;
+ body += '注册地址：' + e.address + nl;
+ body += '经营许可证：' + e.license + nl;
+ body += '法定代表人：' + e.legalName + nl;
+ body += '法人电话：' + e.legalMobile + nl;
+ body += '法人Email：' + e.legalEmail + nl;
+ body += 'IT负责人：' + e.itName + nl;
+ body += 'IT负责人电话：' + e.itMobile + nl;
+ body += 'IT负责人Email：' + e.itEmail + nl;
+ body += 'IT负责人微信：' + e.itWid + nl;
+ if (e.itGithub) body += 'IT负责人GitHub：' + e.itGithub + nl;
+ }
+ return body;
+}
+
+// 复制到剪贴板
+function copyToClipboard() {
+ const d = collectData();
+ const reviewer = getReviewer();
+ const body = buildEmailBody(d);
+ const subject = d.nickname + ' 的高级KYC申请资料';
+ const nl = '\n';
+ const fullText = '收件人：' + reviewer.email + nl + '审查员：' + reviewer.name + nl + '主题：' + subject + nl + nl + body;
+
+ navigator.clipboard.writeText(fullText).then(function() {
+ alert('✅ 已复制到剪贴板！\n\n请前往邮箱，新建邮件→粘贴收件人、主题和正文→发送。\n\n收件人：' + reviewer.email);
+ }).catch(function() {
+ var ta = document.createElement('textarea');
+ ta.value = fullText;
+ document.body.appendChild(ta);
+ ta.select();
+ document.execCommand('copy');
+ document.body.removeChild(ta);
+ alert('✅ 已复制！请前往邮箱粘贴发送。');
+ });
+}
+
+// 发送邮件
+function sendEmail() {
+ const d = collectData();
+ const reviewer = getReviewer();
+ const body = buildEmailBody(d);
+ const subject = encodeURIComponent(`${d.nickname} 的高级KYC申请资料`);
+ const bodyEncoded = encodeURIComponent(body);
+ const mailto = `mailto:${reviewer.email}?subject=${subject}&body=${bodyEncoded}`;
+ window.location.href = mailto;
+ // 显示 fallback 提示（部分浏览器可能拦截 mailto 协议）
+ closeModal();
+ setTimeout(function() {
+ alert('✉️ 邮件客户端未自动打开？\n\n请手动操作：\n1. 打开邮箱\n2. 新建邮件\n3. 收件人：' + reviewer.email + '\n4. 主题：' + d.nickname + ' 的高级KYC申请资料\n5. 粘贴之前复制的内容并发送');
+ }, 800);
+}
+</script>
+
+</body>
+</html>

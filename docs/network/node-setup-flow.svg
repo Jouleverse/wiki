@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 1200" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="13">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#666"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#4a6cf7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="660" height="1080" fill="#fafafa" rx="12"/>
+
+  <!-- Title -->
+  <text x="330" y="36" text-anchor="middle" fill="#1a1a2e" font-weight="700" font-size="18">Jouleverse 节点搭建完整流程</text>
+  <text x="330" y="56" text-anchor="middle" fill="#888" font-size="12">从零开始到持续获得 PoWh 激励</text>
+
+  <!-- === Step 1: 购买云主机 === -->
+  <rect x="185" y="78" width="260" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="100" text-anchor="middle" fill="#333" font-weight="600" font-size="13">① 购买并配置云主机</text>
+  <text x="315" y="117" text-anchor="middle" fill="#666" font-size="11">最低 2核4G40G · Ubuntu 20.04</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="315" y1="128" x2="315" y2="155" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 2: 防火墙配置（合并） === -->
+  <rect x="140" y="158" width="350" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="180" text-anchor="middle" fill="#333" font-weight="600" font-size="13">② 配置防火墙端口</text>
+  <text x="315" y="197" text-anchor="middle" fill="#666" font-size="11">通用：30311/tcp+udp　|　见证节点额外：8501/tcp</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="315" y1="208" x2="315" y2="235" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 3: 准备 keystore === -->
+  <rect x="165" y="238" width="300" height="50" rx="8" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <text x="315" y="260" text-anchor="middle" fill="#333" font-weight="600" font-size="13">③ 准备 keystore 账户</text>
+  <text x="315" y="277" text-anchor="middle" fill="#e65100" font-size="11">⚠ 仅记账节点需要（vanity-eth 生成）</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="315" y1="288" x2="315" y2="315" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 4: 下载节点包 === -->
+  <rect x="185" y="318" width="260" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="340" text-anchor="middle" fill="#333" font-weight="600" font-size="13">④ 下载节点包并启动节点</text>
+  <text x="315" y="357" text-anchor="middle" fill="#666" font-size="11">jouleverse-node-20260129</text>
+
+  <!-- Arrow → decision -->
+  <line x1="315" y1="368" x2="315" y2="393" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Decision: 节点类型 === -->
+  <polygon points="315,395 410,422 315,449 220,422" fill="#f3e5f5" stroke="#8e24aa" stroke-width="1.5"/>
+  <text x="315" y="420" text-anchor="middle" fill="#333" font-weight="600" font-size="12">节点类型？</text>
+
+  <!-- Witness branch (left) -->
+  <line x1="280" y1="449" x2="120" y2="480" stroke="#43a047" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="190" y="468" text-anchor="middle" fill="#43a047" font-weight="600" font-size="11">见证节点</text>
+
+  <!-- Miner branch (right) -->
+  <line x1="350" y1="449" x2="510" y2="480" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="440" y="468" text-anchor="middle" fill="#e65100" font-weight="600" font-size="11">记账节点</text>
+
+  <!-- Witness path -->
+  <rect x="20" y="483" width="200" height="50" rx="8" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="120" y="505" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⏳ 同步 + 审计</text>
+  <text x="120" y="522" text-anchor="middle" fill="#666" font-size="11">添加审计节点 · 截图报告</text>
+  <line x1="120" y1="533" x2="120" y2="558" stroke="#43a047" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="20" y="561" width="200" height="50" rx="8" fill="#e8f5e9" stroke="#43a047" stroke-width="1.5"/>
+  <text x="120" y="583" text-anchor="middle" fill="#333" font-weight="600" font-size="13">📋 审计入网</text>
+  <text x="120" y="600" text-anchor="middle" fill="#666" font-size="11">三张截图 · 填表 · 提请审计</text>
+
+  <!-- Miner path -->
+  <rect x="410" y="483" width="200" height="50" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="510" y="505" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⏳ 同步 + 质押 100万 WJ</text>
+  <text x="510" y="522" text-anchor="middle" fill="#666" font-size="11">向 PoS 质押合约转账</text>
+  <line x1="510" y1="533" x2="510" y2="558" stroke="#e65100" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="410" y="561" width="200" height="50" rx="8" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="510" y="583" text-anchor="middle" fill="#333" font-weight="600" font-size="13">🗳 审计 + 投票入网</text>
+  <text x="510" y="600" text-anchor="middle" fill="#666" font-size="11">填表 · 审计 · 投票 · 正式出块</text>
+
+  <!-- Merge paths -->
+  <line x1="120" y1="611" x2="120" y2="635" stroke="#666" stroke-width="1"/>
+  <line x1="510" y1="611" x2="510" y2="635" stroke="#666" stroke-width="1"/>
+  <line x1="120" y1="635" x2="315" y2="635" stroke="#666" stroke-width="1"/>
+  <line x1="510" y1="635" x2="315" y2="635" stroke="#666" stroke-width="1"/>
+  <circle cx="315" cy="635" r="3" fill="#666"/>
+  <line x1="315" y1="635" x2="315" y2="660" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 5: KYC === -->
+  <rect x="185" y="663" width="260" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="685" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⑤ 完成高级 KYC 认证</text>
+  <text x="315" y="702" text-anchor="middle" fill="#666" font-size="11">填写 KYC 登记表单</text>
+
+  <line x1="315" y1="713" x2="315" y2="740" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 6: Notify reviewer to issue Core ID === -->
+  <rect x="140" y="743" width="350" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="765" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⑥ 提醒审查员查收 KYC 认证信息</text>
+  <text x="315" y="782" text-anchor="middle" fill="#666" font-size="11">审查通过后链上颁发 Core 🆔（链上 NFT）</text>
+
+  <line x1="315" y1="793" x2="315" y2="820" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 7: Get GAS (now before check-in) === -->
+  <rect x="185" y="823" width="260" height="50" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="845" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⑦ 获取初始 GAS（燃料费）</text>
+  <text x="315" y="862" text-anchor="middle" fill="#666" font-size="11">互助/水龙头 faucet.f7t.cn · unwrap WJ</text>
+
+  <line x1="315" y1="873" x2="315" y2="900" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 8: First check-in (moved after GAS) === -->
+  <rect x="165" y="903" width="300" height="50" rx="8" fill="#e1f5fe" stroke="#0288d1" stroke-width="1.5"/>
+  <text x="315" y="925" text-anchor="middle" fill="#333" font-weight="600" font-size="13">🆕 ⑧ 立即完成第一次链上打卡</text>
+  <text x="315" y="942" text-anchor="middle" fill="#666" font-size="11">wiki.jouleverse.com 首页签到</text>
+
+  <line x1="315" y1="953" x2="315" y2="980" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- === Step 9: Monthly check-in === -->
+  <rect x="185" y="983" width="260" height="56" rx="8" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1.5"/>
+  <text x="315" y="1005" text-anchor="middle" fill="#333" font-weight="600" font-size="13">⑨ 每月链上签到打卡 ←┐</text>
+  <text x="315" y="1023" text-anchor="middle" fill="#666" font-size="11">wiki.jouleverse.com 首页签到</text>
+  <text x="315" y="1037" text-anchor="middle" fill="#888" font-size="10">（持续享受 PoWh 激励）</text>
+
+  <!-- Monthly loop arrow -->
+  <path d="M315,983 C445,983 475,1039 315,1039" fill="none" stroke="#4a6cf7" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-blue)"/>
+  <text x="420" y="1015" text-anchor="middle" fill="#4a6cf7" font-size="10">每月循环</text>
+
+  <!-- Legend -->
+  <rect x="30" y="1060" width="600" height="80" rx="8" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="50" y="1080" fill="#333" font-weight="600" font-size="13">图例：</text>
+  <rect x="50" y="1088" width="90" height="20" rx="4" fill="#eef1ff" stroke="#4a6cf7" stroke-width="1"/>
+  <text x="148" y="1103" fill="#666" font-size="11">公共步骤</text>
+  <rect x="210" y="1088" width="90" height="20" rx="4" fill="#e8f5e9" stroke="#43a047" stroke-width="1"/>
+  <text x="308" y="1103" fill="#666" font-size="11">见证节点</text>
+  <rect x="370" y="1088" width="90" height="20" rx="4" fill="#fff3e0" stroke="#e65100" stroke-width="1"/>
+  <text x="468" y="1103" fill="#666" font-size="11">记账节点</text>
+  <line x1="50" y1="1125" x2="100" y2="1125" stroke="#4a6cf7" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="110" y="1130" fill="#666" font-size="11">每月循环</text>
+</svg>
