@@ -525,6 +525,7 @@ jnode console admin.nodeInfo
 
 ## 版本
 
+* 2.2 小新: 2026.7.14 新增入网后操作指南文档，节点文档增加SVG流程图、AI AGENTS提示、节点类型区分标注（审核：教链）
 * 2.1 evan.j: 2026.1.29 节点包升级为rc 20260129 - 修复一些bug，改进脚本初始化，改进签名机安全策略
 * 2.0 evan.j: 2026.1.26 节点包升级为rc 20260126 - 集成clef签名机，全新管理脚本
 * 1.10 evan.j: 2024.3.1 节点包升级为rc 20240229 - 支持tag
@@ -545,3 +546,4 @@ jnode console admin.nodeInfo
 
 - Evan Liu 🆔J25 (evan.j)
 - Astudysunny
+- 小新 🆔J60
