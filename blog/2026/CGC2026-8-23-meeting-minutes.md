@@ -1,11 +1,11 @@
 CGC2026-8-23会议纪要
 
-录制：Jouleverse CGC会议（2026.08.16）
+录制：Jouleverse CGC会议（2026.08.23）
 日期：2026-08-23 13:58:46
 录制文件：https://meeting.tencent.com/crm/23prMXwa66
 访问密码：BN1W
 
-转写：Transcription_Jouleverse CGC会议（2026.08.16）
+转写：Transcription_Jouleverse CGC会议（2026.08.23）
 日期：2026-08-23 13:58:44
 转写文件：https://meeting.tencent.com/ctm/2rb3BRO398
 访问密码：0O45
