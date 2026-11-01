@@ -1,5 +1,37 @@
 ## 2026年
 
+### 10月
+
+* 2026.10.13 [Jouleverse CGC会议纪要（2026.10.11）](2026/202610/2026-10-xx-CGC20261011-meeting-minutes.md)
+* 2026.10.xx [Jouleverse CGC会议纪要（2026.10.18）](2026/202610/2026-10-xx-CGC20261018-meeting-minutes.md)
+* 2026.10.xx [Jouleverse CGC会议纪要（2026.10.25）](2026/202610/2026-10-xx-CGC20261025-meeting-minutes.md)
+
+### 9月
+
+* 2026.09.xx [Jouleverse CGC会议纪要（2026.08.30）](2026/202609/2026-09-xx-CGC20260830-meeting-minutes.md)
+* 2026.09.xx [Jouleverse CGC会议纪要（2026.09.13）](2026/202609/2026-09-xx-CGC20260913-meeting-minutes.md)
+
+### 8月
+
+* 2026.08.xx [Jouleverse CGC会议纪要（2026.08.02）](2026/202608/2026-08-xx-CGC20260802-meeting-minutes.md)
+* 2026.08.xx [Jouleverse CGC会议纪要（2026.08.09）](2026/202608/2026-08-xx-CGC20260809-meeting-minutes.md)
+* 2026.08.xx [Jouleverse CGC会议纪要（2026.08.16）](2026/202608/2026-08-xx-CGC20260816-meeting-minutes.md)
+* 2026.08.xx [Jouleverse CGC会议纪要（2026.08.23）](2026/202608/2026-08-XX-CGC20260823-meeting-minutes.md)
+
+### 7月
+
+* 2026.07.02 [Jouleverse CGC会议纪要（2026.06.28）](2026/202607/2026-07-02-CGC20260628-meeting-minutes.md)
+* 2026.07.14 [CGC20260712](2026/202607/2026-07-14-CGC20260712.md)
+* 2026.07.xx [Jouleverse CGC会议纪要（2026.07.05）](2026/202607/2026-07-xx-CGC20260705-meeting-minutes.md)
+* 2026.07.xx [Jouleverse CGC会议纪要（2026.07.19）](2026/202607/2026-07-xx-CGC20260719-meeting-minutes.md)
+* 2026.07.xx [Jouleverse CGC会议纪要（2026.07.26）](2026/202607/2026-07-xx-CGC20260726-meeting-minutes.md)
+
+### 6月
+
+* 2026.06.04 [Jouleverse CGC会议纪要（2026.05.31）](2026/202606/2026-06-04-CGC20260531-meeting-minutes.md)
+* 2026.06.11 [Jouleverse CGC会议纪要（2026.06.07）](2026/202606/2026-06-11-CGC20260607-meeting-minutes.md)
+* 2026.06.25 [Jouleverse CGC会议纪要（2026.06.14）](2026/202606/2026-06-25-CGC20260614-meeting-minutes.md)
+
 ### 5月
 
 * 2026.05.18 [Jouleverse CGC会议纪要（2026.05.10）](2026/202605/2026-05-18-CGC20260510-meeting-minutes.md)
@@ -24,7 +56,7 @@
 
 * 2026.02.04 [Jouleverse节点包RC20260129测试发布](2026/202602/2026-02-04-node-package-20260129.md)
 * 2026.02.05 [Jouleverse CGC会议纪要（2026.02.01）](2026/202602/2026-02-05-CGC20260201-meeting-minutes.md)
-* 2026.02.11 [Jouleverse CGC会议纪要（2026.02.08）](2026/202602/2026-02-11-CGC20260201-meeting-minutes.md)
+* 2026.02.11 [Jouleverse CGC会议纪要（2026.02.08）](2026/202602/2026-02-11-CGC20260208-meeting-minutes.md)
 
 ### 1月
 
