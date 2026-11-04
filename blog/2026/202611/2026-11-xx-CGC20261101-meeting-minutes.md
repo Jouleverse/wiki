@@ -175,3 +175,6 @@ playbook：https://gcnmbaqf8vh8.feishu.cn/wiki/OfWZwOuw1iH9bwkiX7Ncrlulnec
 * **会议预定：** Bataroc J-67
 * **会议主持兼书记员：** Koant J-0
 * **CGC会议讨论区发言：** Bataroc J-67 、教链(evan) J-25、微尘 J-53、
+
+* **编辑：** Koant J-0
+* **审校：** 如行 J-12
