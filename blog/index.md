@@ -1,5 +1,10 @@
 ## 2026年
 
+### 11月
+
+* 2026.11.xx [Jouleverse CGC会议纪要（2026.11.01）](2026/202611/2026-11-xx-CGC20261101-meeting-minutes.md)
+* 2026.11.xx [Jouleverse CGC会议纪要（2026.11.15）](2026/202611/2026-11-xx-CGC20261115-meeting-minutes.md)
+
 ### 10月
 
 * 2026.10.xx [Jouleverse CGC会议纪要（2026.10.25）](2026/202610/2026-10-xx-CGC20261025-meeting-minutes.md)
